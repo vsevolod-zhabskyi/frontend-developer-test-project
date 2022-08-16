@@ -6,15 +6,21 @@ import { Project } from 'app/types/Project'
 import { Header } from 'app/ds'
 
 import { ProjectItemView } from './ProjectItemView'
+
 import styles from './ProjectsListView.styles'
 
 export const ProjectsListView: React.FC<{
   projects: Project[]
+  selectedProjectIndex: number | null
   onProjectPress: (project: Project) => void
-}> = ({ projects, onProjectPress }) => {
+}> = ({ projects, selectedProjectIndex, onProjectPress }) => {
   const renderItem = useCallback(
-    ({ item }: { item: Project }) => <ProjectItemView project={item} onPress={onProjectPress} />,
-    []
+    ({ item, index }: { item: Project; index: number }) => {
+      const style = index === selectedProjectIndex ? styles.selectedProject : null
+
+      return <ProjectItemView project={item} onPress={onProjectPress} style={style} />
+    },
+    [selectedProjectIndex, onProjectPress]
   )
 
   return (

@@ -7,8 +7,5 @@ export default StyleSheet.create({
     backgroundColor: colors.background.contrast,
     paddingHorizontal: 10,
     paddingVertical: 20
-  },
-  selectedProject: {
-    borderColor: colors.card.borderSelected
   }
 })
