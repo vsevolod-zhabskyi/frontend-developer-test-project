@@ -16,9 +16,10 @@ function App() {
   const [selectedProjectIndex, setSelectedProjectIndex] = useState<null | number>(null)
   const [tasks, setTasks] = useState<Task[]>([])
 
-  const headerText = selectedProjectIndex
-    ? `Tasks for "${projects[selectedProjectIndex].name}"`
-    : 'All tasks'
+  const headerText =
+    selectedProjectIndex !== null
+      ? `Tasks for "${projects[selectedProjectIndex].name}"`
+      : 'All tasks'
 
   const onProjectPress = useCallback(
     (project: Project) => {
