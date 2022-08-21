@@ -23,29 +23,17 @@ function App() {
 
   const onProjectPress = useCallback(
     (project: Project) => {
-      const index = projects.indexOf(project)
+      setSelectedProjectIndex(prevIndex => {
+        const index = projects.indexOf(project)
 
-      if (index === selectedProjectIndex) {
-        setSelectedProjectIndex(null)
-        return
-      }
-
-      setSelectedProjectIndex(index)
-    },
-    [selectedProjectIndex]
-  )
+        return index === prevIndex ? null : index
+      })
+    }, [])
 
   const onTaskPress = useCallback(
     (changedTask: Task) => {
-      const newTasks = [...tasks]
-      const task: Task = tasks.find(task => task.name === changedTask.name)!
-
-      task.completed = !task.completed
-
-      setTasks(newTasks)
-    },
-    [tasks]
-  )
+      setTasks(tasks => tasks.map(task => task.name === changedTask.name ? {...task, completed: !task.completed} : task))
+    },[])
 
   useEffect(() => {
     const newTasks: Task[] =

@@ -12,7 +12,7 @@ import styles from './TaskItemView.styles'
 export const TaskItemView: React.FC<{
   task: Task
   onPress: (task: Task) => void
-}> = ({ task, onPress }) => {
+}> = React.memo(({ task, onPress }) => {
   const markStyles = useMergedStyle<ViewStyle>(
     styles.taskMark,
     task.completed ? styles.taskMarkCompleted : styles.taskMarkNonCompleted
@@ -33,4 +33,4 @@ export const TaskItemView: React.FC<{
       </Card>
     </Pressable>
   )
-}
+})

@@ -35,5 +35,22 @@ export const PROJECTS: Project[] = [
         description: 'When user presses on a project, show all of the tasks for that project'
       }
     ]
-  }
+  },
+
+  {
+    name: 'Spotify',
+    description: 'Spotify is a web application that allows listen music.',
+    tasks: [
+      {
+        name: 'Find music',
+        description: 'Setup a new project with React Native',
+        completed: true
+      },
+      {
+        name: 'Play music',
+        description: 'Add sign in functionality to the application',
+        completed: false
+      }
+    ]
+  },
 ]

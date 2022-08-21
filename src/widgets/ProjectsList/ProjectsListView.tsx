@@ -13,12 +13,10 @@ export const ProjectsListView: React.FC<{
   projects: Project[]
   selectedProjectIndex: number | null
   onProjectPress: (project: Project) => void
-}> = ({ projects, selectedProjectIndex, onProjectPress }) => {
+}> = React.memo(({ projects, selectedProjectIndex, onProjectPress }) => {
   const renderItem = useCallback(
     ({ item, index }: { item: Project; index: number }) => {
-      const style = index === selectedProjectIndex ? styles.selectedProject : null
-
-      return <ProjectItemView project={item} onPress={onProjectPress} style={style} />
+      return <ProjectItemView project={item} onPress={onProjectPress} selected={index === selectedProjectIndex} />
     },
     [selectedProjectIndex, onProjectPress]
   )
@@ -31,4 +29,4 @@ export const ProjectsListView: React.FC<{
       style={styles.list}
     />
   )
-}
+})

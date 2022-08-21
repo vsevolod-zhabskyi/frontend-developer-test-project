@@ -13,7 +13,7 @@ export const TasksListView: React.FC<{
   tasks: Task[]
   onTaskPress: (task: Task) => void
   headerText: string
-}> = ({ tasks, onTaskPress, headerText }) => {
+}> = React.memo(({ tasks, onTaskPress, headerText }) => {
   const renderItem = useCallback(
     ({ item }: { item: Task }) => <TaskItemView task={item} onPress={onTaskPress} />,
     [onTaskPress]
@@ -27,4 +27,4 @@ export const TasksListView: React.FC<{
       style={styles.list}
     />
   )
-}
+})
